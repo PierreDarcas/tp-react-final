@@ -1,5 +1,7 @@
 import React from "react";
 import "./AppBar.css";
+import logo from "./AppBar.logo.svg";
+
 
 const AppBar = () => (
     <header>

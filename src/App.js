@@ -1,6 +1,4 @@
 import React from "react";
-import "./AppBar.css";
-import logo from "./AppBar.logo.svg";
 import "./App.css";
 import {
   BrowserRouter as Router,
