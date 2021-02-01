@@ -9,81 +9,32 @@ import {
   Switch,
 } from 'react-router-dom';
 import FourOhFour from "./pages/fourOhFour";
+import Converter from "./pages/converter";
 
 const App = () => (
-
-  <Router>
-    <Switch>
-      <Route exact path="/404">
-        <FourOhFour />
-      </Route>
-    </Switch>
-  </Router>
-
-
-  // <div className="App">
-  //   <header>
-  //     <nav className="AppBar">
-  //       <img
-  //         className="AppBar-logo"
-  //         src={logo}
-  //         aria-label="people"
-  //         alt="People"
-  //       />
-  //     </nav>
-  //   </header>
-  //   <main>
-  //     <div className="container">
-  //       <div className="row">
-  //         <h3>Convertisseur</h3>
-  //         <div className="col s8">
-  //           <div className="row">
-  //             <div className="col s6">
-  //               <select
-  //                 defaultValue="EUR"
-  //                 className="browser-default"
-  //                 name="inputDevises"
-  //                 id="inputDevises"
-  //               >
-  //                 <option value="EUR">EUR</option>
-  //                 <option value="CHF">CHF</option>
-  //                 <option value="GBP">GBP</option>
-  //                 <option value="USD">USD</option>
-  //               </select>
-  //             </div>
-  //             <div className="col s6">
-  //               <select
-  //                 defaultValue="EUR"
-  //                 className="browser-default"
-  //                 name="outputDevises"
-  //                 id="outputDevises"
-  //               >
-  //                 <option value="EUR">EUR</option>
-  //                 <option value="CHF">CHF</option>
-  //                 <option value="GBP">GBP</option>
-  //                 <option value="USD">USD</option>
-  //               </select>
-  //             </div>
-  //           </div>
-  //           <div className="row">
-  //             <div className="input-field col s12">
-  //               <input id="amount" type="text" className="" value="0" />
-  //               <span
-  //                 className="helper-text"
-  //                 data-error="Erreur"
-  //                 data-success="Valide"
-  //               ></span>
-  //               <label htmlFor="amount">Montant</label>
-  //             </div>
-  //             <div className="input-field col s12">
-  //               <h5>Résultat : 0</h5>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </main>
-  // </div>
+  
+  <div className="App">
+    <header>
+      <nav className="AppBar">
+        <img
+          className="AppBar-logo"
+          src={logo}
+          aria-label="people"
+          alt="People"
+        />
+      </nav>
+    </header>
+    <Router>
+      <Switch>
+        <Route exact path="/404">
+          <FourOhFour />
+        </Route>
+        <Route exact path="/">
+          <Converter />
+        </Route>
+      </Switch>
+    </Router>
+  </div>
 );
 
 export default App;

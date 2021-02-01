@@ -1,7 +1,7 @@
 import React from "react";
 import "./fourOhFour.css";
 
-const FourOhFour = (props) => (
+const FourOhFour = () => (
     <div className="FourOhFour">
       <div className="FourOhFour-title">
         <h1>Wrong Way</h1>
