@@ -10,20 +10,12 @@ import {
 } from 'react-router-dom';
 import FourOhFour from "./pages/fourOhFour";
 import Converter from "./pages/converter";
+import AppBar from "./components/Header/AppBar"
 
 const App = () => (
   
   <div className="App">
-    <header>
-      <nav className="AppBar">
-        <img
-          className="AppBar-logo"
-          src={logo}
-          aria-label="people"
-          alt="People"
-        />
-      </nav>
-    </header>
+    <AppBar />
     <Router>
       <Switch>
         <Route exact path="/404">
