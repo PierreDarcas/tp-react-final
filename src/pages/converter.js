@@ -1,6 +1,7 @@
 import React from "react";
 import "./converter.css";
 import Input from "../components/Input/input";
+import Output from "../components/Output/output";
 
 class Converter extends React.Component{
   constructor(props){
@@ -48,9 +49,7 @@ class Converter extends React.Component{
               </div>
               <div className="row">
                 <Input value={to_convert}/>
-                <div className="input-field col s12">
-                  <h5>Résultat : 0</h5>
-                </div>
+                <Output value={to_convert}/>
               </div>
             </div>
           </div>
