@@ -2,28 +2,27 @@ import React from "react";
 import "./converter.css";
 import Input from "../components/Input/input";
 import Output from "../components/Output/output";
+import ExchangeRates from "../components/Exchangerates/exchangerates";
 
 class Converter extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       to_convert: 12,
-      just_converted:0
+      just_converted:null,
+      xRates:[]      
     };
   }
 
   componentDidMount() {
-    var { to_convert } = this.state;
-    fetch("https://exchangeratesapi.io/")
+    fetch("https://api.exchangeratesapi.io/latest?base=USD&symbols=MXN")
       .then((res) => res.json())
-      .then(({ data }) => this.setState({ just_converted: data.rates["CHF"] * to_convert }));
-  }
-
-  // .then(data => (!isNaN(amount))?setResult(data.rates[toCurrency] * amount):setResult(0))
+      .then((resJsonBis) => this.setState({ xRates:resJsonBis}));
+  };
 
   render(){
-    var { to_convert } = this.state;
-    var { just_converted } = this.state;
+    const { to_convert } = this.state;
+    const { xRates } = this.state;
     return(
       <main>
         <div className="container">
@@ -60,7 +59,8 @@ class Converter extends React.Component{
               </div>
               <div className="row">
                 <Input value={to_convert}/>
-                <Output output= {just_converted}/>
+                {/* <Output output= {xRates}/> */}
+                <ExchangeRates file={xRates}/>
               </div>
             </div>
           </div>
