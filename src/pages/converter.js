@@ -7,12 +7,23 @@ class Converter extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      to_convert: 0
+      to_convert: 12,
+      just_converted:0
     };
   }
 
+  componentDidMount() {
+    var { to_convert } = this.state;
+    fetch("https://exchangeratesapi.io/")
+      .then((res) => res.json())
+      .then(({ data }) => this.setState({ just_converted: data.rates["CHF"] * to_convert }));
+  }
+
+  // .then(data => (!isNaN(amount))?setResult(data.rates[toCurrency] * amount):setResult(0))
+
   render(){
-    const { to_convert } = this.state;
+    var { to_convert } = this.state;
+    var { just_converted } = this.state;
     return(
       <main>
         <div className="container">
@@ -49,7 +60,7 @@ class Converter extends React.Component{
               </div>
               <div className="row">
                 <Input value={to_convert}/>
-                <Output value={to_convert}/>
+                <Output output= {just_converted}/>
               </div>
             </div>
           </div>
