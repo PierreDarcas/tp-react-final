@@ -7,16 +7,5 @@ const ExchangeRates = ({ from,to, xr }) => (
   </p>
 );
 
-ExchangeRates.propTypes = {
-  file: PropTypes.shape({
-    rates: PropTypes.array.isRequired,
-    base: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-  })
-};
-
-// ExchangeRates.defaultProps = {
-//   rates: [],
-// }
 
 export default ExchangeRates;
