@@ -1,11 +1,11 @@
 import React from "react";
-import * as PropTypes from "prop-types";
 
+//A class for test purpose
 
-const ExchangeRates = ({ from,to, xr }) => (
+const ValueDisplay = ({ from,to, xr }) => (
   <p>from :{from} to:{to} xr:{xr}
   </p>
 );
 
 
-export default ExchangeRates;
+export default ValueDisplay;
