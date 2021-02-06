@@ -5,10 +5,6 @@ import Output from "../components/Output/output";
 import CurrencySelector from "../components/CurrencySeletor/currencySelector";
 import ExchangeRates from "../components/Exchangerates/exchangerates";
 
-const searchChanged = (value) => () => ({
-  search: value || ""
-});
-
 const BASE_URL = 'https://api.exchangeratesapi.io/latest';
 
 class Converter extends React.Component{
@@ -19,29 +15,13 @@ class Converter extends React.Component{
       xRates:null,
       base_currency:"EUR",
       exchange_currency:"USD",
-      reconst_url:""
     };
   }
 
-  // componentDidMount() {
-  //   fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
-  //     .then((res) => res.json())
-  //     .then((resJsonBis) => this.setState({ xRates:resJsonBis}))
-  //     .then((resJsonBisRates) => this.setState({aRates:resJsonBisRates.rates}));
-  // };
-
   componentDidMount() {
     this.apiCall();
-    // fetch("https://api.exchangeratesapi.io/latest?base=EUR&symbols=USD")
-    //   .then((res) => res.json())
-    //   .then((resJsonBis) => this.setState({ xRates:resJsonBis.rates["USD"]}));
   };
-  // componentDidUpdate() {
-  //   const {exchange_currency} = this.state
-  //   fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
-  //     .then((res) => res.json())
-  //     .then((resJsonBis) => this.setState({ xRates:resJsonBis.rates[{exchange_currency}]}));
-  // };
+
 
   setBaseCurrency=(e)=>{
     this.setState({base_currency: e.target.value});
@@ -59,11 +39,8 @@ class Converter extends React.Component{
   apiCall(){
     const {base_currency} = this.state;
     const {exchange_currency} = this.state;
-    this.setState({reconst_url: `${BASE_URL}?base=${base_currency}&symbols=${exchange_currency}` });
     fetch(`${BASE_URL}?base=${base_currency}&symbols=${exchange_currency}`)
-    //fetch("https://api.exchangeratesapi.io/latest?base=EUR&symbols=MXN")
       .then((res) => res.json())
-      //.then((resJsonBis) => this.setState({ xRates:resJsonBis.rates["USD"]}));
       .then((resJsonBis) => this.setState({ xRates:resJsonBis.rates[exchange_currency]}));
   }
 
@@ -76,7 +53,6 @@ class Converter extends React.Component{
     const { xRates } = this.state;
     const {base_currency} = this.state;
     const {exchange_currency} = this.state;
-    const {reconst_url} = this.state;
     return(
       <main>
         <div className="container">
@@ -92,7 +68,6 @@ class Converter extends React.Component{
                 <Output file={xRates} montant ={to_convert}/>
                 <ExchangeRates from={base_currency} to ={exchange_currency} xr={xRates}/>
               </div>
-              <p>{reconst_url}</p>
             </div>
           </div>
         </div>
