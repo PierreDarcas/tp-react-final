@@ -27,15 +27,23 @@ class Converter extends React.Component{
   };
 
   setBaseCurrency=(e)=>{
-    this.setState({base_currency: e.target.value});
+    const {exchange_currency} = this.state;
+    if(e.target.value !== exchange_currency){
+      this.setState({base_currency: e.target.value});
+    }
     //this.apiCall();
   }
   setExchangeCurrency=(e)=>{
-    this.setState({exchange_currency: e.target.value});
+    const {base_currency} = this.state;
+    if(e.target.value !== base_currency){
+      this.setState({exchange_currency: e.target.value});
+    }
     //this.apiCall();
   }
   setValueInput=(e)=>{
-    this.setState({to_convert: e.target.value});
+    if(!isNaN(e.target.value)){
+      this.setState({to_convert: e.target.value});
+    }
     //this.apiCall();
   }
 
@@ -66,7 +74,7 @@ class Converter extends React.Component{
                 <CurrencySelector value={base_currency} onChange={this.setBaseCurrency}/>
                 <CurrencySelector value={exchange_currency} onChange={this.setExchangeCurrency}/>
               </div>
-              <Spinner />
+              {/* <Spinner /> */}
               <div className="row">
                 <Input value={to_convert} onChange={this.setValueInput} onClick={this.resetValue}/>
                 <Output file={xRates} montant ={to_convert}/>
