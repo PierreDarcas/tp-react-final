@@ -1,6 +1,6 @@
 # TP : Convertisseur de devises
 
-## Créez 2 routes / et /404
+## Créez 2 routes / et /404 
 
 - Ajoutez le router sur l'application
 - Il y a deux composants de pages à créer (convertisseur et 404)

@@ -3,11 +3,8 @@ import React from "react";
 const CurrencySelector = ({...props}) => (
     <div className="col s6">
     <select
-      defaultValue="EUR"
       className="browser-default"
-      name="inputDevises"
-      id="inputDevises"
-      value={...props}
+      {...props}
     >
       <option value="EUR">EUR</option>
       <option value="CHF">CHF</option>
