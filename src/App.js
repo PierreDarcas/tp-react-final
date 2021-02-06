@@ -16,11 +16,11 @@ const App = () => (
     <AppBar />
     <Router>
       <Switch>
-        <Route exact path="/404">
-          <FourOhFour />
-        </Route>
         <Route exact path="/">
           <Converter />
+        </Route>
+        <Route>
+          <FourOhFour />
         </Route>
       </Switch>
     </Router>
