@@ -2,9 +2,8 @@ import React from "react";
 import * as PropTypes from "prop-types";
 
 
-const ExchangeRates = ({ file }) => (
-  <p>{file.base} {file.date} 
-  {file.rates}
+const ExchangeRates = ({ file,montant }) => (
+  <p>{file*montant}
   </p>
 );
 

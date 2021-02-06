@@ -10,19 +10,27 @@ class Converter extends React.Component{
     this.state = {
       to_convert: 12,
       just_converted:null,
-      xRates:[]      
+      xRates:[],
+      aRates:[]      
     };
   }
 
+  // componentDidMount() {
+  //   fetch("https://api.exchangeratesapi.io/latest?base=USD&symbols=MXN")
+  //     .then((res) => res.json())
+  //     .then((resJsonBis) => this.setState({ xRates:resJsonBis}))
+  //     .then((resJsonBisRates) => this.setState({aRates:resJsonBisRates.rates}));
+  // };
   componentDidMount() {
     fetch("https://api.exchangeratesapi.io/latest?base=USD&symbols=MXN")
       .then((res) => res.json())
-      .then((resJsonBis) => this.setState({ xRates:resJsonBis}));
+      .then((resJsonBis) => this.setState({ xRates:resJsonBis.rates["MXN"]}));
   };
 
   render(){
     const { to_convert } = this.state;
     const { xRates } = this.state;
+    const {aRates} = this.state;
     return(
       <main>
         <div className="container">
@@ -59,8 +67,8 @@ class Converter extends React.Component{
               </div>
               <div className="row">
                 <Input value={to_convert}/>
-                {/* <Output output= {xRates}/> */}
-                <ExchangeRates file={xRates}/>
+                <Output output= {aRates}/>
+                <ExchangeRates file={xRates} montant ={to_convert}/>
               </div>
             </div>
           </div>
