@@ -63,8 +63,8 @@ class Converter extends React.Component{
     fetch(`${BASE_URL}?base=${base_currency}&symbols=${exchange_currency}`)
     //fetch("https://api.exchangeratesapi.io/latest?base=EUR&symbols=MXN")
       .then((res) => res.json())
-      .then((resJsonBis) => this.setState({ xRates:resJsonBis.rates["USD"]}));
-      //.then((resJsonBis) => this.setState({ xRates:resJsonBis.rates[{exchange_currency}]}));
+      //.then((resJsonBis) => this.setState({ xRates:resJsonBis.rates["USD"]}));
+      .then((resJsonBis) => this.setState({ xRates:resJsonBis.rates[exchange_currency]}));
   }
 
   resetValue=(e)=>{
