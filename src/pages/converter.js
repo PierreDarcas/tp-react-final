@@ -42,13 +42,19 @@ class Converter extends React.Component{
     this.apiCall();
   }
   setValueInput=(e)=>{
-    if(!isNaN(e.target.value) && e.target.value != 0){
+    if(!isNaN(e.target.value)){
+      e.target.classList.remove('invalid');
+      e.target.classList.add('valid');
       this.setState({to_convert: e.target.value});
+      this.apiCall();
     }else{
-      this.setState({to_convert:null});
+      e.target.classList.remove('valid');
+      e.target.classList.add('invalid');
+      this.setState({to_convert: e.target.value});
     }
-    this.apiCall();
   }
+
+
 
   apiCall(){
     const {base_currency} = this.state;
@@ -99,7 +105,7 @@ class Converter extends React.Component{
               <div className="row">
                 <Input value={to_convert} onChange={this.setValueInput} onClick={this.resetValue}/>
                 <Output file={xRates} montant ={to_convert}/>
-                {/* <ValueDisplay from={base_currency} to ={exchange_currency} xr={xRates}/> */}
+                <ValueDisplay from={base_currency} to ={exchange_currency} xr={xRates}/>
               </div>
             </div>
           </div>
